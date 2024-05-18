@@ -1,0 +1,8 @@
+# ninja log v5
+1	30	1715789221369589665	build.ninja	713b1f3f81628cd
+0	1	0	clean	58ebdecc18dacdb5
+0	162	1715789221545587170	CMakeFiles/ptt.dir/native-lib.cpp.o	bf1172b8de10c95b
+162	324	1715789221705584901	/home/test/develop/10/ptt/app/build/intermediates/cxx/Debug/3q2v2z72/obj/x86/libptt.so	a2fc91af227c81ad
+0	2	0	clean	58ebdecc18dacdb5
+0	190	1715789231141453514	CMakeFiles/ptt.dir/native-lib.cpp.o	bf1172b8de10c95b
+190	278	1715789231233452257	/home/test/develop/10/ptt/app/build/intermediates/cxx/Debug/3q2v2z72/obj/x86/libptt.so	a2fc91af227c81ad

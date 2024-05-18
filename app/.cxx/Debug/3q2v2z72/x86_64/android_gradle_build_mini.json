@@ -1,0 +1,29 @@
+{
+  "buildFiles": [
+    "/home/test/develop/10/ptt/app/src/main/cpp/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/home/test/Android/Sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/home/test/develop/10/ptt/app/.cxx/Debug/3q2v2z72/x86_64",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/home/test/Android/Sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/home/test/develop/10/ptt/app/.cxx/Debug/3q2v2z72/x86_64",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "ptt::@6890427a1f51a3e7e1df": {
+      "artifactName": "ptt",
+      "abi": "x86_64",
+      "output": "/home/test/develop/10/ptt/app/build/intermediates/cxx/Debug/3q2v2z72/obj/x86_64/libptt.so",
+      "runtimeFiles": [
+        "/home/test/develop/10/ptt/app/libs/x86_64/libopus.so"
+      ]
+    }
+  }
+}

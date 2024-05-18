@@ -1,0 +1,6 @@
+# ninja log v5
+0	1486	1715789220049608437	CMakeFiles/ptt.dir/native-lib.cpp.o	8d1b8420e8f6d656
+1486	1654	1715789220217606046	/home/test/develop/10/ptt/app/build/intermediates/cxx/Debug/3q2v2z72/obj/arm64-v8a/libptt.so	bc8c22b72c67cd77
+0	3	0	clean	58ebdecc18dacdb5
+1	557	1715789230569461349	CMakeFiles/ptt.dir/native-lib.cpp.o	8d1b8420e8f6d656
+557	628	1715789230657460142	/home/test/develop/10/ptt/app/build/intermediates/cxx/Debug/3q2v2z72/obj/arm64-v8a/libptt.so	bc8c22b72c67cd77

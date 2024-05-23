@@ -1,8 +1,14 @@
 # ninja log v5
-1	30	1715789221369589665	build.ninja	713b1f3f81628cd
-0	1	0	clean	58ebdecc18dacdb5
-0	162	1715789221545587170	CMakeFiles/ptt.dir/native-lib.cpp.o	bf1172b8de10c95b
-162	324	1715789221705584901	/home/test/develop/10/ptt/app/build/intermediates/cxx/Debug/3q2v2z72/obj/x86/libptt.so	a2fc91af227c81ad
-0	2	0	clean	58ebdecc18dacdb5
-0	190	1715789231141453514	CMakeFiles/ptt.dir/native-lib.cpp.o	bf1172b8de10c95b
-190	278	1715789231233452257	/home/test/develop/10/ptt/app/build/intermediates/cxx/Debug/3q2v2z72/obj/x86/libptt.so	a2fc91af227c81ad
+2	2438	7377917260063283	CMakeFiles/ptt.dir/native-lib.cpp.o	d7c39a5c5c3353c
+2443	3751	7377917273083827	D:/git/ptt/app/build/intermediates/cxx/Debug/3q2v2z72/obj/x86/libptt.so	6d20c5f9f88d9d4f
+4	645	7377965289875342	CMakeFiles/ptt.dir/native-lib.cpp.o	d7c39a5c5c3353c
+646	847	7377965291696457	D:/git/ptt/app/build/intermediates/cxx/Debug/3q2v2z72/obj/x86/libptt.so	6d20c5f9f88d9d4f
+4	697	7377968869521288	CMakeFiles/ptt.dir/native-lib.cpp.o	d7c39a5c5c3353c
+698	949	7377968871765314	D:/git/ptt/app/build/intermediates/cxx/Debug/3q2v2z72/obj/x86/libptt.so	6d20c5f9f88d9d4f
+145	6638	7378042016529753	CMakeFiles/ptt.dir/native-lib.cpp.o	d7c39a5c5c3353c
+6641	8850	7378042039620587	D:/git/ptt/app/build/intermediates/cxx/Debug/3q2v2z72/obj/x86/libptt.so	6d20c5f9f88d9d4f
+10	1088	7380035469051000	CMakeFiles/ptt.dir/native-lib.cpp.o	d7c39a5c5c3353c
+1089	1367	7380035471833531	D:/git/ptt/app/build/intermediates/cxx/Debug/3q2v2z72/obj/x86/libptt.so	6d20c5f9f88d9d4f
+0	23	0	clean	8b6eb38772ef9922
+18	1414	7380066860335218	CMakeFiles/ptt.dir/native-lib.cpp.o	d7c39a5c5c3353c
+1415	1765	7380066863763129	D:/git/ptt/app/build/intermediates/cxx/Debug/3q2v2z72/obj/x86/libptt.so	6d20c5f9f88d9d4f

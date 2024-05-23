@@ -17,7 +17,7 @@
 rule CXX_COMPILER__ptt_Debug
   depfile = $DEP_FILE
   deps = gcc
-  command = /home/test/Android/Sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=armv7-none-linux-androideabi24 --sysroot=/home/test/Android/Sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/linux-x86_64/sysroot $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = D:\Android\Sdk\ndk\25.1.8937393\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe --target=armv7-none-linux-androideabi24 --sysroot=D:/Android/Sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building CXX object $out
 
 
@@ -25,7 +25,7 @@ rule CXX_COMPILER__ptt_Debug
 # Rule for linking CXX shared library.
 
 rule CXX_SHARED_LIBRARY_LINKER__ptt_Debug
-  command = $PRE_LINK && /home/test/Android/Sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=armv7-none-linux-androideabi24 --sysroot=/home/test/Android/Sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/linux-x86_64/sysroot -fPIC $LANGUAGE_COMPILE_FLAGS $ARCH_FLAGS $LINK_FLAGS -shared $SONAME_FLAG$SONAME -o $TARGET_FILE $in $LINK_PATH $LINK_LIBRARIES && $POST_BUILD
+  command = cmd.exe /C "$PRE_LINK && D:\Android\Sdk\ndk\25.1.8937393\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe --target=armv7-none-linux-androideabi24 --sysroot=D:/Android/Sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot -fPIC $LANGUAGE_COMPILE_FLAGS $ARCH_FLAGS $LINK_FLAGS -shared $SONAME_FLAG$SONAME -o $TARGET_FILE $in $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
   description = Linking CXX shared library $TARGET_FILE
   restat = $RESTAT
 
@@ -42,7 +42,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /home/test/Android/Sdk/cmake/3.22.1/bin/cmake --regenerate-during-build -S/home/test/develop/10/ptt/app/src/main/cpp -B/home/test/develop/10/ptt/app/.cxx/Debug/3q2v2z72/armeabi-v7a
+  command = D:\Android\Sdk\cmake\3.22.1\bin\cmake.exe --regenerate-during-build -SD:\git\ptt\app\src\main\cpp -BD:\git\ptt\app\.cxx\Debug\3q2v2z72\armeabi-v7a
   description = Re-running CMake...
   generator = 1
 
@@ -51,7 +51,7 @@ rule RERUN_CMAKE
 # Rule for cleaning all built files.
 
 rule CLEAN
-  command = /home/test/Android/Sdk/cmake/3.22.1/bin/ninja $FILE_ARG -t clean $TARGETS
+  command = D:\Android\Sdk\cmake\3.22.1\bin\ninja.exe $FILE_ARG -t clean $TARGETS
   description = Cleaning all built files...
 
 
@@ -59,6 +59,6 @@ rule CLEAN
 # Rule for printing all primary targets available.
 
 rule HELP
-  command = /home/test/Android/Sdk/cmake/3.22.1/bin/ninja -t targets
+  command = D:\Android\Sdk\cmake\3.22.1\bin\ninja.exe -t targets
   description = All primary targets available:
 

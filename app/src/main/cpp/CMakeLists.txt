@@ -14,6 +14,7 @@ set_target_properties(opus PROPERTIES IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_D
 include_directories(include)
 
 add_library(${CMAKE_PROJECT_NAME} SHARED
+
         # List C/C++ source files with relative paths to this CMakeLists.txt.
         native-lib.cpp)
 

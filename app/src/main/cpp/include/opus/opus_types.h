@@ -43,7 +43,7 @@
 
 /* Use the real stdint.h if it's there (taken from Paul Hsieh's pstdint.h) */
 #if (defined(__STDC__) && __STDC__ && defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L) || (defined(__GNUC__) && (defined(_STDINT_H) || defined(_STDINT_H_)) || defined (HAVE_STDINT_H))
-#include "../../../../../../../../../Android/Sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/c++/v1/stdint.h"
+#include <stdint.h>
 #  undef opus_int64
 #  undef opus_int8
 #  undef opus_uint64

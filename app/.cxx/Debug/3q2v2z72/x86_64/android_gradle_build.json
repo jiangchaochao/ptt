@@ -1,19 +1,19 @@
 {
   "buildFiles": [
-    "/home/test/develop/10/ptt/app/src/main/cpp/CMakeLists.txt"
+    "D:\\git\\ptt\\app\\src\\main\\cpp\\CMakeLists.txt"
   ],
   "cleanCommandsComponents": [
     [
-      "/home/test/Android/Sdk/cmake/3.22.1/bin/ninja",
+      "D:\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
       "-C",
-      "/home/test/develop/10/ptt/app/.cxx/Debug/3q2v2z72/x86_64",
+      "D:\\git\\ptt\\app\\.cxx\\Debug\\3q2v2z72\\x86_64",
       "clean"
     ]
   ],
   "buildTargetsCommandComponents": [
-    "/home/test/Android/Sdk/cmake/3.22.1/bin/ninja",
+    "D:\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
     "-C",
-    "/home/test/develop/10/ptt/app/.cxx/Debug/3q2v2z72/x86_64",
+    "D:\\git\\ptt\\app\\.cxx\\Debug\\3q2v2z72\\x86_64",
     "{LIST_OF_TARGETS_TO_BUILD}"
   ],
   "libraries": {
@@ -21,16 +21,16 @@
       "toolchain": "toolchain",
       "abi": "x86_64",
       "artifactName": "ptt",
-      "output": "/home/test/develop/10/ptt/app/build/intermediates/cxx/Debug/3q2v2z72/obj/x86_64/libptt.so",
+      "output": "D:\\git\\ptt\\app\\build\\intermediates\\cxx\\Debug\\3q2v2z72\\obj\\x86_64\\libptt.so",
       "runtimeFiles": [
-        "/home/test/develop/10/ptt/app/libs/x86_64/libopus.so"
+        "D:\\git\\ptt\\app\\libs\\x86_64\\libopus.so"
       ]
     }
   },
   "toolchains": {
     "toolchain": {
-      "cCompilerExecutable": "/home/test/Android/Sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/linux-x86_64/bin/clang.lld",
-      "cppCompilerExecutable": "/home/test/Android/Sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++.lld"
+      "cCompilerExecutable": "D:\\Android\\Sdk\\ndk\\25.1.8937393\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+      "cppCompilerExecutable": "D:\\Android\\Sdk\\ndk\\25.1.8937393\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
     }
   },
   "cFileExtensions": [],

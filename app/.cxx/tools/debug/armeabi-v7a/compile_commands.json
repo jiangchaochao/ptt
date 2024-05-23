@@ -1,7 +1,0 @@
-[
-{
-  "directory": "D:/git/ptt/app/.cxx/Debug/3q2v2z72/armeabi-v7a",
-  "command": "D:\\Android\\Sdk\\ndk\\25.1.8937393\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=armv7-none-linux-androideabi24 --sysroot=D:/Android/Sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot -Dptt_EXPORTS -ID:/git/ptt/app/src/main/cpp/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -fno-limit-debug-info  -fPIC -o CMakeFiles\\ptt.dir\\native-lib.cpp.o -c D:\\git\\ptt\\app\\src\\main\\cpp\\native-lib.cpp",
-  "file": "D:\\git\\ptt\\app\\src\\main\\cpp\\native-lib.cpp"
-}
-]

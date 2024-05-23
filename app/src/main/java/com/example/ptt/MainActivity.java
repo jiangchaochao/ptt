@@ -10,8 +10,6 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
-import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ptt.databinding.ActivityMainBinding;
@@ -70,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
         binding.btnInit.setClickable(false);
         // 初始化录音
         AudioR.getInstance().startRecording();
+        // 开始播放
+        AudioP.getInstance().startPlay();
         Toast.makeText(MainActivity.this, "初始化成功", Toast.LENGTH_SHORT).show();
     }
 
@@ -83,5 +83,15 @@ public class MainActivity extends AppCompatActivity {
                 Log.e(TAG, "onRequestPermissionsResult: 没有录音权限");
             }
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // 停止录音
+        AudioR.getInstance().stopRecording();
+        // 停止播放
+        AudioP.getInstance().stopPlay();
+        // 销毁资源
     }
 }

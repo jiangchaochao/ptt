@@ -1,12 +1,8 @@
 package com.example.ptt;
 
 import android.annotation.SuppressLint;
-import android.media.AudioFormat;
-import android.media.AudioManager;
 import android.media.AudioRecord;
-import android.media.AudioTrack;
 import android.media.MediaRecorder;
-import android.util.Log;
 
 import java.nio.ByteBuffer;
 
@@ -40,7 +36,7 @@ public class AudioR {
                     Utils.mBufferSize
             );
         }
-//        if (status == INIT){
+        if (status == INIT){
             // 开始录音
             mRecorder.startRecording();
             isRecording = true;
@@ -48,7 +44,7 @@ public class AudioR {
             // PCM处理线程
             Thread recordingThread = new Thread(this::pcmDataProcess, "Ptt AudioRecorder Thread");
             recordingThread.start();
-//        }
+        }
     }
 
     /**
@@ -56,15 +52,16 @@ public class AudioR {
      */
     private void pcmDataProcess(){
         int length = (Utils.mSampleRate * 20)/1000 * 2 * 2;
+        byte[] bytes = new byte[length];
         while (isRecording){
-//            if (status == START) {
-                Log.e(TAG, "pcmDataProcess: ");
+            if (status == START) {
                 // 读取PCM数据
-                Log.e(TAG, "pcmDataProcess: " + length );
                 mRecorder.read(pcmBuffer, length);
+                // 重置数据起始位
+                pcmBuffer.position(0);
                 // 通知编码发送
                 Opus.getInstance().opus_encoder();
-//            }
+            }
         }
     }
 
@@ -86,7 +83,9 @@ public class AudioR {
         }
     }
 
-
+    /**
+     * 停止录音，释放资源
+     */
     public void stopRecording(){
         if (isRecording && mRecorder != null) {
             mRecorder.stop();

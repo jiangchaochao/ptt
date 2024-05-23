@@ -1,3 +1,0 @@
-D:/git/ptt/app/.cxx/Debug/3q2v2z72/x86/CMakeFiles/ptt.dir
-D:/git/ptt/app/.cxx/Debug/3q2v2z72/x86/CMakeFiles/edit_cache.dir
-D:/git/ptt/app/.cxx/Debug/3q2v2z72/x86/CMakeFiles/rebuild_cache.dir

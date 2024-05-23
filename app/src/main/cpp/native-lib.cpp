@@ -34,16 +34,16 @@ int g_c_fd;                                                   // 客户端socket
 struct sockaddr_in g_c_addr;                                  // 客户端socket address
 
 
-#define MAX_PACKAGE_LENGTH (1024*1024)                        // 最大包大小
+#define MAX_PACKAGE_LENGTH (1024)                           // 最大包大小
 unsigned char g_s_rcv_buf[MAX_PACKAGE_LENGTH];                // 服务端接收数据缓冲区
 
 // opus全局变量
-OpusDecoder *g_decoder = nullptr;                                       // 解码器引擎
-OpusEncoder *g_encoder = nullptr;                                       // 编码器引擎
+OpusDecoder *g_decoder = nullptr;                             // 解码器引擎
+OpusEncoder *g_encoder = nullptr;                             // 编码器引擎
 
 // DirectBuffer
-opus_int16 *g_opus_buffer = nullptr;                                    // 编码后缓冲区
-opus_int16 *g_decoder_buffer = nullptr;                                 // 解码缓冲区
+opus_int16 *g_opus_buffer = nullptr;                          // 编码后缓冲区
+opus_int16 *g_decoder_buffer = nullptr;                       // 解码缓冲区
 
 
 /**
@@ -98,12 +98,19 @@ void native_opus_init(JNIEnv* env, jobject thiz, jint sample_rate, jint channels
         return ;
     }
     // 参数设置
+    //固定码率
     opus_encoder_ctl(g_encoder, OPUS_SET_VBR(0));
-    opus_encoder_ctl(g_encoder, OPUS_SET_VBR_CONSTRAINT(1));
+    //设置码率
     opus_encoder_ctl(g_encoder, OPUS_SET_BITRATE(96000));
+    //设置算法复杂度
+    opus_encoder_ctl(g_encoder, OPUS_SET_COMPLEXITY(8));
+    //仅传输音频
     opus_encoder_ctl(g_encoder, OPUS_SET_SIGNAL(OPUS_SIGNAL_VOICE));
+    //量化位数
     opus_encoder_ctl(g_encoder, OPUS_SET_LSB_DEPTH(g_lsb_depth));
+    //不使用DTX不连续传输(DTX降低编码器的功耗和网络带宽占用)
     opus_encoder_ctl(g_encoder, OPUS_SET_DTX(0));
+    //不使用前向纠错
     opus_encoder_ctl(g_encoder, OPUS_SET_INBAND_FEC(0));
     LOGE("%s(),  opus_encoder_create success", __func__ );
 
@@ -114,6 +121,7 @@ void native_opus_init(JNIEnv* env, jobject thiz, jint sample_rate, jint channels
         return ;
     }
     // 参数设置
+    //量化位数
     opus_decoder_ctl(g_decoder, OPUS_SET_LSB_DEPTH(g_lsb_depth));
     LOGE("%s(), opus_decoder_create success", __func__ );
 }
@@ -145,12 +153,12 @@ jobject native_getDecoderDirectBuffer(JNIEnv* env, jobject thiz){
  * @return void
  */
 void native_opus_encoder(JNIEnv* env, jobject thiz){
-    unsigned char opus_buffer[1024*3];
+    unsigned char opus_buffer[MAX_PACKAGE_LENGTH];
     LOGE("%s(),   g_frame_size: %d     g_opus_buffer = %p  g_encoder = %p\n", __func__ , g_frame_size, g_opus_buffer, g_encoder);
     // 编码
-    int frame_size = opus_encode(g_encoder,g_opus_buffer, g_frame_size, opus_buffer, 1024*3);
+    int data_length = opus_encode(g_encoder,g_opus_buffer, g_frame_size, opus_buffer, MAX_PACKAGE_LENGTH);
     // 发送到对端
-    sendto(g_c_fd, opus_buffer, frame_size * g_channel * g_lsb_depth/8, 0, (struct sockaddr *)&g_c_addr, sizeof(g_c_addr));
+    sendto(g_c_fd, opus_buffer, data_length, 0, (struct sockaddr *)&g_c_addr, sizeof(g_c_addr));
     LOGE("%s(), send to client ", __func__ );
 }
 
@@ -200,12 +208,11 @@ void native_init_network(JNIEnv* env, jobject thiz, jstring local_ip, jint local
     inet_pton(AF_INET, cremoteip, &g_c_addr.sin_addr.s_addr);
     env->ReleaseStringUTFChars(local_ip, clocalip);
     env->ReleaseStringUTFChars(remote_ip, cremoteip);
-    return ;
 }
 
 
 
-// 本地方法数组
+// 本地方法数组，用来函数的动态注册
 static const JNINativeMethod methods[] = {
         {"opus_init", "(III)V", (void *)(native_opus_init)},
         {"getEncodeDirectBuffer", "()Ljava/nio/ByteBuffer;", (void *)(native_getEncoderDirectBuffer)},
@@ -247,14 +254,4 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved){
     g_decoder_buffer = (opus_int16 *)malloc(MAX_PACKAGE_LENGTH);
     // 返回JNI版本
     return JNI_VERSION_1_6;
-}
-
-extern "C"
-JNIEXPORT void JNICALL
-Java_com_example_ptt_Opus_opus_1byte_1encoder(JNIEnv *env, jobject thiz, jbyteArray bytes,
-                                              jint length) {
-    unsigned char opus_buffer[MAX_PACKAGE_LENGTH];
-    jbyte * buffer = env->GetByteArrayElements(bytes, 0);
-    // 编码
-    int frame_size = opus_encode(g_encoder,(opus_int16*)buffer, g_frame_size, opus_buffer, MAX_PACKAGE_LENGTH);
 }

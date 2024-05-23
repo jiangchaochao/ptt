@@ -1,18 +1,21 @@
 package com.example.ptt;
 
+import android.util.Log;
+
 import java.nio.ByteBuffer;
 
 /**
  * 编解码
  */
 public class Opus {
+    private static final String TAG = "Opus";
     static {
         System.loadLibrary("ptt");
     }
     private ByteBuffer mEncodeDirectBuffer;   // 编码时使
     private ByteBuffer mDecodeDirectBuffer;   // 解码时使用
 
-    private IPlayCallback mCallback;    // 回调，用于通知播放器播放数据
+    private IPlayCallback mCallback;          // 回调，用于通知播放器播放数据
 
     /**
      * 初始化方法
@@ -26,10 +29,18 @@ public class Opus {
         opus_init(sample_rate, channels, lsb_depth);
     }
 
+    /**
+     * 获取DirectBuffer，用于PCM编码数据的写入，在AudioR中写入数据
+     * @return mEncodeDirectBuffer
+     */
     public ByteBuffer getmEncodeDirectBuffer() {
         return mEncodeDirectBuffer;
     }
 
+    /**
+     * 获取DirectBuffer，用于解码后数据的写入，在AudioP中获取数据
+     * @return mDecodeDirectBuffer
+     */
     public ByteBuffer getmDecodeDirectBuffer() {
         return mDecodeDirectBuffer;
     }
@@ -67,7 +78,6 @@ public class Opus {
      * 编码一帧数据
      */
     public native void opus_encoder();
-    public native void opus_byte_encoder(byte[] bytes, int length);
 
     /**
      * 给播放数据的类使用
@@ -82,7 +92,8 @@ public class Opus {
      */
     public void onPcmCallback(int size){
         if (mCallback != null){
-            mCallback.onPlay(mDecodeDirectBuffer, size);
+            Log.e(TAG, "onPcmCallback: ");
+            mCallback.onPlay(size);
         }
     }
 

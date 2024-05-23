@@ -1,7 +1,7 @@
 # NDK 实战PTT功能
 
 #### 目的
-联系NDK相关知识
+练习NDK相关知识
 
 #### 一. UI效果
 ![UI效果](https://github.com/jiangchaochao/ptt/blob/main/10-5UI.png?raw=true)
